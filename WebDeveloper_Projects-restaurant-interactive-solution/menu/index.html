@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta name="title" content="Ресторан Эклектика в Москве | Меню">
+    <meta name="description"
+        content="Ресторан «Эклектика» — это место, где сочетаются утонченный вкус и теплая атмосфера. «Эклектика» предлагает уютные залы для семейных ужинов, романтических свиданий и деловых обедов. Мы ценим ваше время и комфорт, поэтому обеспечиваем высокий уровень сервиса.">
+    <meta name="keywords" content="ресторан, restaurant, Москва, обед, ужин, эклектика, кухня, блюда, еда">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="ru">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://eklektika-restoran.ru/" />
+
+    <title>Ресторан Эклектика в Москве | Меню</title>
+
+    <script src="/jquery.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="/style/colors.css" />
+    <link rel="stylesheet" type="text/css" href="/style/common.css" />
+    <link rel="stylesheet" type="text/css" href="/style/menu.css" />
+</head>
+
+<body>
+    <!-- Меню навбар, общее для всех страниц-->
+    <nav>
+        <h1>Эклектика</h1>
+        <div id="menu-container-full">
+            <input type="checkbox" id="menu-hamburger" />
+            <label for="menu-hamburger"></label>
+            <div id="menu-container">
+                <ul>
+                    <li><a href="/">Главная</a></li>
+                    <li><a inactive href="/menu/">Меню</a></li>
+                    <li><a href="/contact/">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Шаблон карточки с блюдом -->
+    <template id="menuItemCard">
+        <figure class="menuItem">
+            <img class="menuItemPic" src />
+            <div class="bottom">
+                <figcaption>
+                    <p class="menuItemName"></p>
+                    <p class="menuItemPrice"></p>
+                </figcaption>
+                <p class="detailsButton" data-details data-kcal >Подробнее</p>
+            </div>
+        </figure>
+    </template>
+    <!-- Здесь начинается основной код содержимого страницы -->
+
+    <div id="top-menus">
+        <!-- Кнопки, которые переключают разделы меню по категориям -->
+        <div id="menu-categories">
+            <a class="menu-category" href="?cat=mainCourse"><button type="button" data-cat="mainCourse">Основные блюда</button></a>
+            <a class="menu-category" href="?cat=salad"><button type="button" data-cat="salad">Закуски и салаты</button></a>
+            <a class="menu-category" href="?cat=dessert"><button type="button" data-cat="dessert">Десерты</button></a>
+        </div>
+
+        <!-- Кнопка онлайн-бронирования -->
+        <a href="/contact"><button id="booking"></button></a>
+    </div>
+
+    <!-- Меню -->
+    <main id="menu">
+
+    </main>
+
+    <!-- Подробнее -->
+    <div id="detailsWindow">
+        <div id="detailsClose">×</div>
+        <h3 id="detailsTitle"></h3>
+        <div id="detailsKcal"></div>
+        <div id="detailsPrice"></div>
+        <div id="detailsInfo"></div>
+    </div>
+
+    <!-- Футер -->
+    <footer>
+        <h3>Эклектика</h3>
+        <div class="social">
+            <p>Следите за нами в соцсетях</p>
+            <ul class="links">
+                <li><a href="https://t.me/"><img src="/assets/svg/tg.svg" alt="Telegram" /></a></li>
+                <li><a href="https://vk.com/"><img src="/assets/svg/vk.svg" alt="VK" /></a></li>
+                <li><a href="https://dzen.ru/"></a><img src="/assets/svg/dzen.svg" alt="Дзен" /></a></li>
+                <li><a href="https://youtu.be/"><img src="/assets/svg/youtube.svg" alt="YouTube" /></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Скрипты, которые выполнятся после того, как загрузится вся страница -->
+    <script async src="./index.js" async="false" type="text/javascript"></script>
+</body>
+</html>

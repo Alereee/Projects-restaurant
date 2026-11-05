@@ -1,0 +1,10 @@
+:root {
+    --nav-bckg: #00000099; /*эквивалент rgba(0,0,0,0.6)*/
+    --text: #ffffff;
+    --content: #000000;
+    --footer: #121212;
+    --text-inactive: #9e9e9e;
+    --button: #E76020;
+    --button-active: #FF7737;
+    --mobile-arrow-bckg: #7f7f7f7f;
+}

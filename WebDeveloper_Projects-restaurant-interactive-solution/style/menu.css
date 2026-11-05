@@ -1,0 +1,223 @@
+
+/* само меню с карточками */
+main#menu {
+    margin: 0 15vw;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 90px;
+    /*tmp*/
+    margin-top: 45px;
+    grid-auto-rows: 1fr;
+}
+
+/* меню – карточка еды */
+.menuItem {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.bottom {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /*space-between;*/
+    align-items: center;
+    padding-bottom: 20px;
+    background-color: var(--text);
+}
+
+.bottom figcaption {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+    margin-top: 20px;
+}
+
+.menuItemName {
+    font-family: var(--pts);
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--content);
+}
+
+.menuItemPrice {
+    font-family: var(--pts);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--content);
+    margin-left: 20px;
+}
+
+.menuItemPrice::after {
+    content: "₽";
+}
+
+.menuItemPic {
+    width: 100%;
+    object-fit: cover;
+}
+
+.detailsButton {
+    height: 80px;
+    color: var(--text);
+    background-color: var(--button);
+    border-radius: 10px;
+    box-sizing: border-box;
+    font-family: var(--pts);
+    font-size: 28px;
+    font-weight: 700;
+    text-align: center;
+    line-height: 125%; /* ie 35 px */
+    padding: 22px 0 23px 0; 
+    width: 90%;
+}
+
+.detailsButton:hover {
+    background-color: var(--button-active);
+}
+
+#detailsWindow {
+    display: none;
+    background-color: white;
+    padding: 30px;
+    position: fixed;
+    top: 200px;
+    margin: 0 35vw;
+    border: 3px solid darkgray;
+}
+
+#detailsClose {
+    font-size: 2.5em;
+    text-align: right;
+}
+
+#detailsTitle {
+    font-size: 1.5em;
+    font-weight: bolder;
+}
+
+#detailsKcal {
+    color: gray;
+    margin: 10px 0;
+}
+
+#detailsPrice {
+    font-size: 1.7em;
+    margin: 20px 0;
+    font-weight: bolder;
+}
+
+#detailsPrice::after {
+    content: " ₽";
+    font-size: 0.9em;
+}
+
+#menu-categories {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0 15vw;
+}
+
+.menu-category button {
+    padding: 5px 15px;
+    margin: 0 3px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: lightgray;
+    background-color: black;
+    border: solid 1px lightgray;
+}
+
+.menu-category button:disabled {
+    color: black;
+    background-color: lightgray;
+}
+
+button#booking {
+    position: fixed;
+    top: 140px;
+    right: 0;
+    background-color: var(--button);
+    color: lightgray;
+    text-align: left;
+    font-size: 1.0em;
+    font-weight: bolder;
+    width: 14vw;
+    padding: 15px 20px;
+    border-radius: 10px 0 0 10px;
+}
+
+button#booking:hover {
+    background-color: var(--button-active);
+}
+
+button#booking:before {
+    content: "ОНЛАЙН-БРОНИРОВАНИЕ";
+}
+
+#top-menus {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    margin-top: 135px;
+}
+
+/* моб версия */
+@media screen and (max-width: 750px) {
+    main#menu {
+        margin: 0 4vw;
+        /*grid-gap: 5vw;*/
+        grid-template-columns: 1fr;
+    }
+
+    #top-menus {
+        margin-top: 120px;
+    }
+
+    #menu-categories {
+        flex-direction: column;
+        margin: 0 4vw;
+    }
+
+    .menu-category button {
+        padding: 10px 10px;
+        margin: 5px 0;
+        width: 40vw;
+        border-radius: 10px;
+        font-weight: bold;
+        color: lightgray;
+        background-color: black;
+        border: solid 1px lightgray;
+    }
+
+    button#booking {
+        position: static;
+        width: min-content;
+        height: auto;
+        aspect-ratio: 1;
+        border-radius: 50%;
+    }
+
+    button#booking:before {
+        content: "ОНЛАЙН-БРОНЬ";
+    }
+
+    .menuItemName {
+        font-size: 18px;
+    }
+
+    .menuItemPrice {
+        font-size: 22px;
+    }
+
+    #detailsWindow {
+        margin: 0 10vw;
+    }
+}

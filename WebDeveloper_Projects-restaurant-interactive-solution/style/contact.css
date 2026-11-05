@@ -1,0 +1,253 @@
+/************
+ * Контакты *
+ ************/
+
+.container {
+    width: 100%;
+    margin: 0;
+    margin-top: 110px;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#order {
+    padding-left: 10vw;
+}
+
+#address {
+    padding-right: 10vw;
+    padding-left: 15vw;
+    align-content: right;
+}
+
+#galleryPicContact {
+    background-image: url("../assets/gallery/contact/contact.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 105 / 89;
+}
+/*
+#galleryPicContact::before {
+    content: "";
+    display: block;
+}*/
+
+#galleryPicMap {
+    background-image: url("../assets/gallery/contact/map.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 474 / 305;
+}
+
+#order input[type="text"] {
+    display: block;
+    margin: 25px 0;
+    padding: 5px 0;
+    width: 350px;
+    border: none;
+    outline-width: 0;
+    border-bottom: 1px solid gray;
+}
+
+#order #datetimepicker {
+    width: 115px;
+    display: inline-block;
+    margin: 0 5px;
+    border: none;
+}
+
+#order input#num-guests {
+    border: none;
+    display: inline;
+    width: 8px;
+    margin: 0;
+}
+
+#order select {
+    display: inline;
+    padding: 5px 0;
+    background: white;
+    border: none;
+    outline-width: 0;
+}
+
+#order .guests {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    font-size: 0.7em;
+    color: gray;
+    width: 350px;
+}
+
+#order .guests .number-control {
+    width: 20px;
+    height: 20px;
+    margin: 0 3px;
+    font-size: 0.8em;
+    padding: 0;
+}
+
+#order button[type="submit"] {
+    background: var(--button);
+    color: white;
+    width: 350px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+}
+
+#order button[type="submit"]:hover {
+    background: var(--button-active);
+}
+
+
+#order p {
+    margin: 15px 0;
+    width: 350px;
+}
+
+.form-element {
+    /*display: inline-block;*/
+    /*vertical-align: top;*/
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    box-sizing: border-box;
+    background-color: var(--text);
+    color: var(--content);
+    font-family: var(--pts);
+    line-height: 120%;
+    padding: 5%;
+    font-size: 22px;
+    line-height: 124%;
+    font-family: var(--pts);
+    font-weight: 400;
+}
+
+#address h3 {
+    margin-bottom: 40px;
+}
+#address span {
+    font-weight: 700;
+}
+
+#calendar {
+    display: none;
+    position: absolute;
+    top: 120px;
+    right: 35vw;
+    width: 30vw;
+    background: white;
+    border: 1px solid darkgray;
+    padding: 10px 5px 20px 5px;
+}
+
+#calendar .close {
+    margin: 5px 5px;
+    font-size: 1.3em;
+    font-weight: bolder;
+}
+
+#calendar h2 {
+    margin: 10px 5px;
+}
+
+#calendar h3 {
+    margin: 5px 0;
+}
+
+#calendar .day-selector {
+    width: 100%;
+}
+
+#calendar .day-selector td, #calendar .day-selector th {
+    text-align: center;
+    padding: 5px;
+}
+
+#calendar .day-selector td div {
+    padding: 7px;
+    font-weight: bold;
+    color: gray;
+    display: inline-block;
+}
+
+#calendar .day-selector td .selected {
+    background: #222B45;
+    color: white;
+    border-radius: calc(1em + 5px);
+}
+
+#calendar .day-selector td .disabled {
+    color: lightgray;
+}
+
+#calendar .time-selector, #calendar .month-selector {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+#calendar .time-selector button, #calendar .month-selector button {
+    width: 30%;
+    margin: 3px;
+    font-size: 1.1em;
+    font-weight: bolder;
+    padding: 10px 5px;
+    border-radius: 10px;
+    border: none;
+    background-color: #F1F3F8;
+    color: #8B9CB3;
+}
+
+#calendar .month-selector button {
+    border: none;
+    background: none;
+    color: #8B9CB3;
+}
+
+#calendar .time-selector button.occupied {
+    visibility: hidden;
+}
+
+#calendar .time-selector button.selected {
+    background: #222B45;
+    color: white;
+}
+
+#calendar .month-selector button.selected {
+    border: none;
+    border-radius: calc(0.55em + 1px);
+    background: #222B45;
+    color: white;
+}
+
+/* моб версия */
+@media screen and (max-width: 750px) {
+    .container {
+        grid-template-columns: 1fr;
+        /*grid-template-rows: 1fr 1fr 1fr 1fr;*/
+    }
+    #galleryPicMap {
+        order: 3;
+    }
+    #address {
+        order: 4;
+    }
+    #calendar {
+        width: 80vw;
+        left: 10vw;
+    }
+}

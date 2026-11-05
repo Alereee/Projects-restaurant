@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta name="title" content="Ресторан Эклектика в Москве | Главная">
+    <meta name="description"
+        content="Ресторан «Эклектика» — это место, где сочетаются утонченный вкус и теплая атмосфера. «Эклектика» предлагает уютные залы для семейных ужинов, романтических свиданий и деловых обедов. Мы ценим ваше время и комфорт, поэтому обеспечиваем высокий уровень сервиса.">
+    <meta name="keywords" content="ресторан, restaurant, Москва, обед, ужин, эклектика, кухня, блюда, еда">
+    <meta name="robots" content="index, follow">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="language" content="ru">
+    <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta name="robots" content="index,follow">
+    <link rel="canonical" href="https://eklektika-restoran.ru/" />
+
+    <title>Ресторан Эклектика в Москве | Главная</title>
+
+    <link rel="stylesheet" type="text/css" href="/style/fonts.css" />
+    <link rel="stylesheet" type="text/css" href="/style/colors.css" />
+    <link rel="stylesheet" type="text/css" href="/style/common.css" />
+    <link rel="stylesheet" type="text/css" href="/style/home.css" />
+
+    <script src="/jquery.js" type="text/javascript"></script>
+    <script src="/index.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <!-- Меню навбар, общее для всех страниц-->
+        <nav>
+        <h1>Эклектика</h1>
+        <div id="menu-container-full">
+            <input type="checkbox" id="menu-hamburger" />
+            <label for="menu-hamburger"></label>
+            <div id="menu-container">
+                <ul>
+                    <li><a inactive href="/">Главная</a></li>
+                    <li><a href="/menu/">Меню</a></li>
+                    <li><a href="/contact/">Контакты</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Шаблон для отзывов. Используйте его, чтобы динамически заполнять секцию с отзывами 
+        с помощью данных из массива -->
+    <template id="reviewTemplate">
+        <section class="reviewContainer">
+            <!-- src оставлен пустым чтобы заполнить его средствами js -->
+            <img class="reviewPhoto" src />
+                    <p class="reviewHeader"><!-- Имя --></p>
+                    <div class="starRating">
+                    </div>
+                <p class="reviewText"><!-- Текст отзыва --></p>
+        </section>
+    </template>
+    <!-- Здесь начинается оснвной код содержимого страницы -->
+    <main id="intro">
+        <img class="bckg" src="./assets/img/home-bckg.png" />
+        <h1>Ресторан<br/><span class="caps">«Эклектика»</span></h1>
+
+        <div class="buttonGroup">
+            <a href="./contact/">
+                <div class="bigButton">
+                    <div class="bigButton_backdrop"></div>
+                    Забронировать онлайн
+                </div>
+            </a>
+            <div class="mobilePromo">
+                Акция
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Акция -->
+    <div id="special-offer">
+        <div class="pic">
+            <div class="darkening">
+                <div class="overlay-text">Акция для двоих</div>
+                <div class="close">X</div>
+            </div>
+        </div>
+        <p>Приглашаем вас отметить День Святого Валентина в «Эклетике» с особенным подарком от ресторана! Забронируйте стол на 14 февраля и наслаждайтесь вечером вдвоем с бесплатной бутылкой шампанского. </p>
+        <p>Проведите романтический вечер в уютной обстановке и наслаждайтесь вкусом вместе с «Эклектикой». Резервируйте столы уже сегодня — места ограничены! 💖</p>
+        <a href="./contact/">
+            <div class="bigButton">Забронировать онлайн</div>
+        </a>
+    </div>
+
+    <button id="open-special-offer">Акция</button>
+
+    <!-- Галерея -->
+
+    <article id="gallery" class="gallery about">
+        <div class="galleryPic">
+            <div class="mob">
+                <img class="leftArrow" src="./assets/svg/left-arrow.svg" />
+                <img class="rightArrow" src="./assets/svg/left-arrow.svg" />
+            </div>
+        </div>
+        <div class="galleryText">
+            <h1></h1>
+            <p></p>
+            <div class="dsk">
+                <img class="leftArrow" src="./assets/svg/left-arrow.svg" />
+                <img class="rightArrow" src="./assets/svg/left-arrow.svg" />
+            </div>
+        </div>
+    </article>
+
+    <!-- Отзывы -->
+    <article id="reviewsSection">
+        <h2 id="reviewsSubheader">Отзывы</h2>
+        <section id="reviewsCarousel">
+            <img id="leftReviewArrow" class="inactive" src="./assets/svg/big-right-arrow.svg" />
+            <div id="reviews" class="reviews">
+            </div>
+            <img id="rightReviewArrow" src="./assets/svg/big-right-arrow.svg" />
+        </section>
+        <button id="showMore">Показать ещё</button>
+    </article>
+
+    <!-- Контакты -->
+    <article id="contact" class="contact">
+        <div class="galleryPic"></div>
+        <div class="contactText">
+            <span>Мы открыты:</span><br /><br />Пн-Чт с 18:00 до 23:00<br />Пт с 17:00 до 23:00<br />Сб-Вс с 12:00 до 23:00<br /><br />Москва, ул. Ленина, д.11<a href="tel:+79110000080">+7 (911) 000-00-80</a>
+            <a href="./contact/"><div class="bigButton">Забронировать онлайн</div></a>
+        </div>
+    </article>
+
+    <!-- Футер -->
+    <footer>
+        <h3>Эклектика</h3>
+        <div class="social">
+            <p>Следите за нами в соцсетях</p>
+            <ul class="links">
+                <li><a href="https://t.me/"><img src="./assets/svg/tg.svg" alt="Telegram" /></a></li>
+                <li><a href="https://vk.com/"><img src="./assets/svg/vk.svg" alt="VK" /></a></li>
+                <li><a href="https://dzen.ru/"><img src="./assets/svg/dzen.svg" alt="Дзен" /></a></li>
+                <li><a href="https://youtu.be/"><img src="./assets/svg/youtube.svg" alt="YouTube" /></a></li>
+            </ul>
+        </div>
+    </footer>
+
+    <!-- Скрипты, которые выполнятся после того, как загрузится вся страница -->
+    <script src="./events.js" async="false" type="text/javascript"></script>
+    <script src="./reviews.js" async="false" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,664 @@
+/* Интро */
+#intro {
+    width: 100%;
+    height: 910px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+#intro .bckg {
+    width: 100%;
+    height: 910px;
+    object-fit: cover;
+    top: 0;
+    left: 0;
+    position: absolute;
+    opacity: 0.6;
+    z-index: -1;
+}
+
+#intro h1 {
+    color: var(--text);
+    font-family: var(--bn);
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 96px;
+    text-align: center;
+    z-index: 3;
+}
+
+#intro h1 .caps {
+    font-family: var(--bn);
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 96px;
+    text-transform: uppercase;
+}
+
+/* кнопки */
+
+.buttonGroup {
+    display: contents;
+}
+
+.bigButton {
+    margin-top: 35px;
+    width: 420px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: var(--button);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+}
+
+.bigButton:hover {
+    background-color: var(--button-active);
+}
+/* 
+.bigButton .bigButton_backdrop {
+    position: absolute;
+    left: 50vw;
+    top: 568px;
+    height: 0px;
+    width: 0px;
+    border-radius: 277px;
+    background-color: var(--button-active);
+    transition: height ease 0.5s, width ease 0.5s, top ease 0.5s, left ease 0.5s;
+    z-index: 4;
+} */
+
+a .bigButton {
+    text-align: center;
+    color: var(--text);
+    font-family: var(--pts);
+    font-weight: 700;
+    font-size: 28px;
+    z-index: 5;
+}
+/* 
+.bigButton:hover .bigButton_backdrop {
+    left: calc(50vw - 210px);
+    top: 528px;
+    height: 80px;
+    width: 420px;
+} */
+
+.mobilePromo {
+    margin-top: 20px;
+    width: 100%;
+    height: 55px;
+    box-sizing: border-box;
+    border: 2px solid var(--text);
+    border-radius: 10px;
+    text-align: center;
+    color: var(--text);
+    font-family: var(--pts);
+    font-weight: 700;
+    font-size: 18px;
+    align-items: center;
+    justify-content: center;
+    display: none;
+}
+
+/* галерея */
+.gallery {
+    display: flex;
+    flex-direction: row;
+    height: 640px;
+    width: 100%;
+}
+
+.galleryPic {
+    background-size: cover;
+    width: 50vw;
+    height: 100%;
+}
+
+.galleryText {
+    width: 50vw;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: var(--text);
+    color: var(--content);
+    font-family: var(--pts);
+    line-height: 120%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 30px;
+    padding: 5%;
+}
+
+.galleryText h1 {
+    font-weight: 700;
+    font-size: 32px;
+}
+
+.galleryText p {
+    font-weight: 400;
+    font-size: 18px;
+    white-space: pre-wrap; /* необходимо для корректной работы '\A' – переноса строки (см ниже) */
+}
+
+/* стрелочки – один svg на обе стрелки, используем transform и opacity */
+#rightArrow {
+    transform: rotate(180deg);
+    margin-left: 40px;
+}
+
+.gallery .mob {
+    display: none; /* это отображение только для мобильных устройств */
+    height: 90%; /* отступ от низа картинки */
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+/* на мобильных устройствах есть фон и границы M: в макете нечетная высота, с ней в работате ненужные сложности */
+.gallery .mob img {
+    height: 28px;
+    padding: 2px 8px;
+    border-radius: 10px;
+    background-color: var(--mobile-arrow-bckg);
+    filter: invert(1);
+    transition: filter ease 0.5s;
+}
+
+/* svg изначально черный, делаем его белым в нужных случаях (на моб устройствах) */
+.about .mob .leftArrow,
+.values .mob .rightArrow {
+    filter: invert(0);
+}
+
+/* на десктопе отличается не цвет а прозрачность */
+.about .dsk .leftArrow,
+.values .dsk .rightArrow {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.about .dsk .rightArrow,
+.values .dsk .leftArrow {
+    cursor: pointer;
+    transition: transform ease 0.5s;
+}
+
+.rightArrow {
+    margin-left: calc(85px - 2 * 17px);
+    transform: rotate(180deg);
+}
+
+.about .rightArrow:hover {
+    transform: rotate(180deg) scale(1.25);
+}
+
+.values .leftArrow:hover {
+    transform: scale(1.25);
+}
+
+/* Наиболее простой способ (поскольку не стояло задачи строить серьезный JS код) 
+ * без управления состоянием или более сложных вариантов, сделать разный текст – 
+ * изменять класс по нажатию, и текст с картинкой задавать через content и background-image
+ * Важно! content будет работать только на псевдо элементах (наследуют стиль своего основного элемента) */
+.about h1::after {
+    content: "О нас";
+}
+
+/* '\A' это в понимании CSS '\n', '\n' не сработает */
+.about p::after {
+    content: "Ресторан «Эклектика» — это место, где сочетаются утонченный вкус и теплая атмосфера. Наши шеф-повара тщательно подбирают ингредиенты и создают блюда с любовью к каждому клиенту.\A\A«Эклектика» предлагает уютные залы для семейных ужинов, романтических свиданий и деловых обедов. Мы ценим ваше время и комфорт, поэтому обеспечиваем высокий уровень сервиса.\A\AДобро пожаловать в мир великолепных вкусов и неповторимых воспоминаний."
+}
+
+.about .galleryPic {
+    background-image: url(../assets/gallery/gallery_about.png);
+}
+
+.values h1::after {
+    content: "Наши ценности";
+}
+
+.values p::after {
+    content: "«Эклектика» — это уютное место, где каждый гость становится частью нашей семьи. Мы гордимся тем, что создали атмосферу, в которой сочетается элегантность и теплота, а меню предлагает богатство вкусов, подчеркивая лучшие кулинарные традиции мира.\A\AРесторан «Эклектика» — это не просто еще одно место для обеда. Это место, где сливаются воедино стиль, вкус и теплота, создавая неповторимый опыт для тех, кто ценит настоящую гастрономию."
+}
+
+.values .galleryPic {
+    background-image: url(../assets/gallery/gallery_values.png);
+}
+
+/**********/
+/* отзывы */
+/**********/
+
+#reviewsCarousel {
+    display: flex;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 166px 6vw;
+    padding-top: 35px;
+}
+
+.reviews {
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    display: flex;
+    flex-direction: row;
+    gap: 30px;
+    align-items: stretch;
+    background-color: transparent;
+    margin: 0 50px;
+}
+
+.reviewContainer {
+    display: grid;
+    grid-template-columns: 10vmax auto 10vw;
+    grid-template:  "p n r"
+                    "p t t";
+    grid-gap: 30px;
+    background: var(--text);
+    color: var(--content);
+    flex-shrink: 0;
+    box-sizing: border-box;
+    width: calc(40vw - 65px);
+    padding: 30px;
+}
+
+.starRating {
+    grid-area: r;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    align-content: center;
+}
+
+.starRating img {
+    width: 100%;
+}
+
+
+#rightReviewArrow,
+#leftReviewArrow {
+    width: 4vw;
+    cursor: pointer;
+}
+
+#leftReviewArrow {
+    transform: rotate(180deg) !important;
+}
+
+.inactive {
+    opacity: 0.4;
+    cursor: default !important;
+}
+
+.reviewPhoto {
+    height: 10vmax;
+    width: 10vmax;
+    border-radius: 5vmax;
+    grid-area: p;
+}
+
+.reviewName {
+    grid-area: n;
+}
+
+.reviewText {
+    grid-area: t;
+}
+
+.reviewContainer {
+    font-family: var(--pts);
+    font-size: 18px;
+    font-weight: 400;
+}
+
+.reviewHeader {
+    display: flex;
+    align-items: flex-end;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+#reviewsSubheader {
+    font-family: var(--bn);
+    font-size: 32px;
+    color: var(--text);
+    font-weight: 700;
+    margin-left: calc(10vw + 50px);
+    margin-top: 92px;
+}
+
+/************
+ * Контакты *
+ ************/
+.contact {
+    display: flex;
+    flex-direction: row;
+    height: 640px;
+    width: 100%;
+}
+
+.contact .galleryPic {
+    background-image: url("../assets/gallery/contact.png");
+}
+
+.contactText {
+    width: 50vw;
+    height: 100%;
+    box-sizing: border-box;
+    background-color: var(--text);
+    color: var(--content);
+    font-family: var(--pts);
+    line-height: 120%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5%;
+    font-size: 22px;
+    line-height: 124%;
+    font-family: var(--pts);
+    font-weight: 400;
+}
+
+.contactText span {
+    font-weight: 700;
+}
+
+#showMore {
+    display: none;
+}
+
+
+
+#special-offer {
+    display: none;
+    background-color: white;
+    z-index: 999;
+    position: fixed;
+}
+
+#special-offer .pic {
+    background-image: url(/assets/img/specialOffer.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: auto;
+    aspect-ratio: 625/350;
+}
+
+#special-offer .overlay-text {
+    font-family: Bona Nova;
+    font-size: 2.5em;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: center;
+    color: var(--text);
+}
+
+
+#special-offer .close {
+    font-family: Bona Nova;
+    font-size: 2em;
+    font-weight: 700;
+    line-height: 26px;
+    letter-spacing: 0em;
+    text-align: right;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: var(--text);
+}
+
+#open-special-offer {
+    position: fixed;
+    left: 30px;
+    bottom: 50px;
+    width: 10vw;
+    height: 10vw;
+    border-radius: calc(10vw / 2);
+    background-color: var(--button);
+    color: var(--text);
+    font-size: 1.5em;
+    font-weight: 700;
+}
+
+
+@media screen and (min-width: 751px) {
+
+    .starRating {
+        grid-area: r;
+        display: grid;
+        grid-template-columns: repeat(5, 34px);
+        align-content: center;
+    }
+    
+    .starRating img {
+        width: 34px;
+    }
+    
+    
+
+    #special-offer {
+        top: 5vh;
+        left: calc( (100vw - (90vh / 785 * 625)) / 2);
+        height: 90vh;
+        width: auto;
+        aspect-ratio: 625/785;
+    }    
+    
+    #special-offer .overlay-text {
+        padding-top: calc( (100% / 625 * 350) * 1.08 );
+        color: black;
+    }
+
+    #special-offer .darkening {
+        height: auto;
+        aspect-ratio: 625/350;
+    }
+    
+    #special-offer .darkening {
+        background-color: none;
+    }
+    
+    #special-offer p {
+        padding: 30px 15px 0 15px;
+        text-align: center;
+    }
+    
+    #special-offer p {
+        font-size: 1.1em;
+    }
+    
+    #special-offer .bigButton {
+        margin: 20px auto;
+    }
+
+}
+
+/* версия для меньших экранов */
+@media screen and (max-width: 1250px) {
+    .reviewContainer {
+        grid-template-columns: 10vmax 1fr;
+        grid-template:  "p"
+                        "n"
+                        "r"
+                        "t";
+        width: calc(80vw - 100px);
+    }
+    .reviewHeader {
+        font-size: 20px;
+    }
+    .reviewPhoto {
+        margin: auto;
+        height: 40vh;
+        width: 40vh;
+        border-radius: 20vh;
+    }
+}
+
+/* моб версия */
+@media screen and (max-width: 750px) {
+    /* добавляем паддинг по бокам, изменяем align на левый с центрального, а вертикальный на space-between */
+    #intro {
+        height: 100vh;
+        padding: 0 30px;
+        box-sizing: border-box;
+        align-items: flex-start;
+        justify-content: space-between;
+    }
+    /* фон не должен отображаться в моб версии */
+    #intro .bckg {
+        display: none;
+    }
+    /* отступ для заголовка с учетом изменения flex параметров */
+    #intro h1 {
+        margin-top: 30vh;
+    }
+    /* изменяем толщину и размер шрифта */
+    #intro h1,
+    #intro h1 .caps {
+        text-align: left;
+        font-weight: 700;
+        font-size: 35px;
+        line-height: 35px;
+    }
+    /* кнопка "Акция" только для моб устройств */
+    .buttonGroup {
+        display: block;
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    .mobilePromo {
+        display: flex;
+    }
+    /* кнопка "Забронировать" – меняем высоту, размер шрифта, делаем ширину 100% и убираем анимацию ховера */
+    .bigButton {
+        width: 100%;
+        height: 55px;
+    }
+    a .bigButton {
+        font-size: 18px;
+    }
+    /* .bigButton_backdrop {
+        display: none;
+    } */
+
+    /* галерея – самое существенное изменение – перенос кнопок, в остальном достаточно убрать
+     * ограничение высоты у родителя (для детей наоборот, задать в пискелях) и изменить flex-direction */
+    .gallery, .contact {
+        height: auto;
+        flex-direction: column;
+    }
+    .galleryPic {
+        height: 250px;
+        width: 100%;
+    }
+    .galleryText, .contactText {
+        height: 500px;
+        width: 100%;
+    }
+    .contactText {
+        font-size: 20px;
+        padding: 10%;
+    }
+    .galleryText h1 {
+        font-size: 28px;
+    }
+    /* убираем десктопные стрелочки и показываем мобильные */
+    .gallery .mob {
+        display: flex;
+    }
+    .gallery .dsk {
+        display: none;
+    }
+    /* для соответствия макету M: но непонтяна нерегулярность с десктоп версией */
+    .values .galleryText {
+        background-color: var(--content);
+        color: var(--text);
+    }
+
+    #reviewsCarousel {
+        padding: 166px 6vw 40px 6vw;
+    }
+
+    .reviews {
+        flex-direction: column;
+    }
+
+    .reviews .reviewContainer:not(:first-child) {
+        display: none;
+    }
+
+    #showMore {
+        display: block;
+        margin: 20px 0;
+        margin-left: 28vw;
+        width: 204px;
+        height: 55px;
+        top: 1885px;
+        left: 77px;
+        border-radius: 100px;
+        background: none;
+        border: 2px solid white;
+        color: var(--text);
+        font-family: PT Sans;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 23px;
+        letter-spacing: 0em;
+        /* text-align: left; */        
+    }
+
+
+
+    .reviewContainer {
+        display: grid;
+        grid-template-columns: 10vmax 1fr;
+        grid-template:  "p n"
+                        "p r"
+                        "t t";
+    }
+
+    .reviewPhoto {
+        /* height: 10vh;
+        width: 10vh; */
+        border-radius: 50%;
+        grid-area: p;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1;
+    }
+
+    #rightReviewArrow,
+    #leftReviewArrow {
+        display: none;
+    }
+
+    #special-offer {
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+    }
+ 
+    #special-offer .darkening {
+        background-color: rgba(0,0,0,0.6);
+    }
+
+    #special-offer .overlay-text {
+        padding-top: calc( (100% / 625 * 350) * 0.4 );
+        color: var(--text);
+    }
+
+    #special-offer p {
+        font-size: 1.5em;
+    }  
+    
+    #open-special-offer {
+        display: none;
+    }
+}
